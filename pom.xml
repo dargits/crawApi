@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>genshin-coupon-scraper</name>
     <description>Genshin Impact Coupon Scraper API</description>
+    <packaging>war</packaging>
     <properties>
         <java.version>17</java.version>
     </properties>

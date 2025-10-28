@@ -4,6 +4,7 @@
 # Log file
 *.log
 logs/
+coupon-scraper.log
 
 # BlueJ files
 *.ctxt
