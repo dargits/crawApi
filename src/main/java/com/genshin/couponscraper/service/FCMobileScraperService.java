@@ -79,15 +79,21 @@ public class FCMobileScraperService {
     
     private List<CouponResponse> scrapeWithHtmlUnit() {
         try (WebClient webClient = new WebClient(BrowserVersion.CHROME)) {
+            // Configure for production environment
             webClient.getOptions().setJavaScriptEnabled(true);
             webClient.getOptions().setCssEnabled(false);
             webClient.getOptions().setDownloadImages(false);
             webClient.getOptions().setThrowExceptionOnScriptError(false);
             webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
             webClient.getOptions().setTimeout(TIMEOUT_MS);
+            webClient.getOptions().setUseInsecureSSL(true);
+            
+            // Set user agent for better compatibility
+            webClient.addRequestHeader("User-Agent", 
+                "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36");
             
             HtmlPage page = webClient.getPage(FC_MOBILE_URL);
-            webClient.waitForBackgroundJavaScript(5000);
+            webClient.waitForBackgroundJavaScript(3000); // Reduced wait time for production
             
             String pageSource = page.asXml();
             Document doc = Jsoup.parse(pageSource);
