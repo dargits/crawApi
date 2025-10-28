@@ -17,3 +17,5 @@ COPY --from=build /app/target/coupon-scraper-0.0.1-SNAPSHOT.war coupon-scraper.w
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "coupon-scraper.war"]
+
+#docker build -t coupon-scraper .
