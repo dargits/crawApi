@@ -1,0 +1,8 @@
+com\genshin\couponscraper\service\GenshinImpactScraperService.class
+com\genshin\couponscraper\service\PlayTogetherScraperService.class
+com\genshin\couponscraper\model\CouponResponse.class
+com\genshin\couponscraper\controller\CouponController.class
+com\genshin\couponscraper\GenshinCouponScraperApplication.class
+com\genshin\couponscraper\service\FCMobileScraperService.class
+com\genshin\couponscraper\service\HonkaiStarRailScraperService.class
+com\genshin\couponscraper\service\BloxFruitsScraperService.class
