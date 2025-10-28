@@ -47,17 +47,18 @@ public class FCMobileScraperService {
             try {
                 logger.info("Attempt {} of {}", attempt, MAX_RETRIES);
                 
-                List<CouponResponse> codes = scrapeWithHtmlUnit();
+                // Try JSoup first (more reliable on cloud platforms)
+                List<CouponResponse> codes = scrapeWithJSoup();
                 if (!codes.isEmpty()) {
-                    logger.info("Successfully fetched {} FC Mobile codes", codes.size());
+                    logger.info("JSoup found {} FC Mobile codes", codes.size());
                     return codes;
                 }
                 
-                // Fallback to JSoup if HtmlUnit fails
-                logger.info("HtmlUnit returned no codes, trying JSoup fallback...");
-                codes = scrapeWithJSoup();
+                // Fallback to HtmlUnit if JSoup fails
+                logger.info("JSoup returned no codes, trying HtmlUnit fallback...");
+                codes = scrapeWithHtmlUnit();
                 if (!codes.isEmpty()) {
-                    logger.info("JSoup fallback found {} FC Mobile codes", codes.size());
+                    logger.info("HtmlUnit fallback found {} FC Mobile codes", codes.size());
                     return codes;
                 }
                 

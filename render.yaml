@@ -7,10 +7,12 @@ services:
     region: singapore
     branch: main
     healthCheckPath: /craw/health
+    buildCommand: ""
+    startCommand: ""
     envVars:
       - key: PORT
         value: 8080
       - key: JAVA_OPTS
-        value: "-Xmx512m -Xms256m"
+        value: "-Xmx400m -Xms200m -XX:+UseG1GC"
       - key: SPRING_PROFILES_ACTIVE
         value: "production"
